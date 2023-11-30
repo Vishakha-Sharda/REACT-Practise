@@ -1,0 +1,158 @@
+import React, { useEffect,useState } from 'react';
+import { Link } from 'react-router-dom';
+import './App.css';
+
+function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+  
+// eslint-disable-next-line react-hooks/exhaustive-deps
+
+   useEffect(() => {
+	 localStorage.setItem('formData', JSON.stringify(formData));
+  
+   }, []);
+
+
+  const initial = {
+	firstName: '',
+	 email: '',
+	password: '',
+	lastName:'',
+  };
+
+  const [formErrors, setFormErrors] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+  const [isRegistered, setIsRegistered] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    // Validate the input as it changes
+    validateInput(name, value);
+  };
+
+  const validateInput = (name, value) => {
+    // Basic validation checks (you can add more complex validation logic)
+    let errorMessage = '';
+
+    if (name === 'firstName' || name === 'lastName') {
+      if (!value) {
+        errorMessage = 'This field is required*.';
+      }
+    } else if (name === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!value.match(emailRegex)) {
+        errorMessage = 'Please enter a valid email address*.';
+      }
+    } else if (name === 'password') {
+      if (value.length < 6) {
+        errorMessage = 'Password must be at least 6 characters long*.';
+      }
+    }
+
+    setFormErrors({
+      ...formErrors,
+      [name]: errorMessage,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    
+    if (formData.firstName === '' || formData.email === '' || formData.password === '' || formData.lastName==='') {
+     
+      setFormErrors({
+        firstName: 'First Name is required*',
+        lastName: 'Last Name is required*',
+        email: 'Email is required*',
+        password: 'Password is required*',
+      });
+	 setFormData(initial);
+	
+	 
+    } else {
+      setIsRegistered(true);
+      setFormData(initial);
+    }
+
+  };
+  
+
+  return (
+    <div>
+      <h1>Registration Form</h1>
+      {isRegistered && (
+        <div className="success-message"><b>Registered successfully!</b></div>
+      )}
+      <br/>
+      <form  >
+        <div>
+		<label className="form-label"> FirstName  </label>
+	
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+          <p className="error-message">{formErrors.firstName}</p>
+        </div>
+        <div>
+		<label className="form-label">Last Name  </label>	
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+          <p className="error-message">{formErrors.lastName}</p>
+        </div>
+        <div>
+		<label className="form-label">Email add.  </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <p className="error-message">{formErrors.email}</p>
+        </div>
+        <div>
+		<label className="form-label">Password  </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <p className="error-message">{formErrors.password}</p>
+        </div>
+        <button  onClick={handleSubmit} className='btn' type="submit">Register</button>
+
+      </form>
+      <br/>
+
+      <Link to="/LoginPage"> Login</Link> 
+    </div>
+  );
+}
+
+export default RegistrationForm;

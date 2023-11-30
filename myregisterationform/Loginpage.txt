@@ -1,0 +1,74 @@
+import React, {useEffect,  useState } from 'react';
+import { Link } from 'react-router-dom';
+import './App.css';
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [formData, setformData] = useState(null);
+
+
+   useEffect(() => {
+     const storedFormData = JSON.parse(localStorage.getItem('formData'));
+   console.log(storedFormData);
+     if (storedFormData) {
+      
+       setformData(storedFormData);
+     }
+   }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    //  entered email and password match the stored user data
+    if (formData.email ===email && formData.password ===password) {
+      alert('Login successful');
+    } else {
+      alert('Invalid email or password');
+    }
+  };
+
+  return (
+    <div>
+      <h1>Login Page</h1>
+      <div className="dropdown-menu">
+        <form onSubmit={handleLogin} className="px-4 py-3">
+          <div className="form-group">
+            <label htmlFor="exampleDropdownFormEmail1">Email add</label>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              value={email}
+              className="form-control"
+              id="exampleDropdownFormEmail1"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleDropdownFormPassword1">Password</label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              value={password}
+              className="form-control"
+              id="exampleDropdownFormPassword1"
+            />
+          </div>
+          <div className="form-check">
+            <input type="checkbox" className="form-check-input" id="dropdownCheck" />
+            <label className="form-check-label" htmlFor="dropdownCheck">
+              Remember me
+            </label>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Sign in
+          </button>
+        </form>
+        
+        <br />
+       {/* <a className="dropdown-item" href="/">
+          Forgot password?</a>*/}
+            </div>
+            <Link to="/">Register</Link> 
+    </div>
+  );
+}

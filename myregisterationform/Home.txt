@@ -1,0 +1,30 @@
+
+
+
+
+import React from 'react';
+
+import { Link } from 'react-router-dom';
+function Home() {
+  return (
+   
+      
+        <div className="App background-image" style={{backgroundColor:"black"}}>
+        <h1> Follow Here</h1>
+        <ul>  
+                <li>
+                  <Link to="/">Home</Link>  
+                 </li>
+                <li>  
+                  <Link to="/RegistrationForm">Register</Link>  
+                </li>  
+                <li>  
+                  <Link to="/LoginPage">Login</Link>  
+                </li>  
+              </ul>  </div>
+        
+        );
+    };
+ 
+
+export default Home

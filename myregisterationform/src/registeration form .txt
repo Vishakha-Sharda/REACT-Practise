@@ -1,0 +1,1439 @@
+import { useState } from 'react';
+
+export default function RegistrationForm() {
+
+	
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+    const [isValid, setIsValid] = useState(true);
+	const [password, setPassword] = useState('');
+    
+    const[phoneNumber,setPhoneNumber]=useState('');
+    
+
+	const [submitted, setSubmitted] = useState(false);
+	const [error, setError] = useState(false);
+
+	
+	const handleName = (e) => {
+		setName(e.target.value);
+		setSubmitted(false);
+	};
+const handlePhoneNumber =(e)=>{
+    setPhoneNumber(e.target.value);
+    setSubmitted(false);
+    
+}
+const validateEmail = (email) => {
+    const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return pattern.test(email);
+};
+	
+	const handleEmail = (e) => {
+		const newEmail=e.target.value;
+       
+        setEmail(newEmail);
+		setSubmitted(false);
+        setIsValid(validateEmail(newEmail));
+	};
+
+	
+	const handlePassword = (e) => {
+		setPassword(e.target.value);
+		setSubmitted(false);
+	};
+
+	
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (name === '' || email === '' || password === '' || phoneNumber==='') {
+			setError(true);
+		
+		}
+         else if (isValid) {
+            setSubmitted(true);
+			setError(false);
+            
+           
+          } else {
+           
+			setError(false);
+            alert("Enter a valid email");
+          }
+	};
+    
+   
+
+	
+	const successMessage = () => {
+		return (
+			<div
+				className="success"
+				
+                style={{
+					display: submitted ? '' : 'none',
+                    
+				}}>
+                <h1> Your are Registered successfully</h1>
+                
+				
+			</div>
+		);
+	};
+
+	
+	const errorMessage = () => {
+		return (
+			<div
+				className="error my-3"
+				style={{
+					display: error ? '' : 'none',
+				}}>
+				<h1>Please enter all the fields</h1>
+			</div>
+		);
+	};
+
+    
+    
+
+
+	return (
+		<div className="form">
+			
+
+			<div className="messages">
+				{errorMessage()}
+
+				{successMessage()}
+			</div>
+
+			<form>
+				
+				<label className="form-label">Name:  </label>
+				<input onChange={handleName} className="input"
+					value={name} type="text" />
+                     <div className="col-md-6"></div>
+
+
+				<label className="form-label">Email:   </label>
+				<input onChange={handleEmail} className="input"
+					value={email} type="email" />
+                    
+                     <div className="col-md-6"></div>
+
+				<label className="form-label">Pasword:  </label>
+				<input onChange={handlePassword} className="input"
+					value={password} type="password" />
+                     <div className="col-md-6"></div>
+                     
+				<label className="form-label"> P.NUMBER:</label>
+				<input onChange={handlePhoneNumber} className="input"
+					value={phoneNumber} type="phonenumber" />
+                     <div className="col-md-6"></div>
+
+
+				<button onClick={handleSubmit} className="btn"
+						type="submit">
+					Submit
+				</button>
+			</form>
+            
+		</div>
+	);
+}
+
+
+
+
+
+
+
+
+
+import { useState } from 'react';
+
+export default function RegistrationForm() {
+
+	
+	const [name, setName] = useState('');
+	const [email, setEmail] = useState('');
+    const [isValid, setIsValid] = useState(true);
+	const [password, setPassword] = useState('');
+    
+    const[phoneNumber,setPhoneNumber]=useState('');
+    
+
+	const [submitted, setSubmitted] = useState(false);
+	const [error, setError] = useState(false);
+
+	
+	const handleName = (e) => {
+		setName(e.target.value);
+		setSubmitted(false);
+	};
+const handlePhoneNumber =(e)=>{
+    setPhoneNumber(e.target.value);
+    setSubmitted(false);
+    
+}
+const validateEmail = (email) => {
+    const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return pattern.test(email);
+};
+	
+	const handleEmail = (e) => {
+		const newEmail=e.target.value;
+       
+        setEmail(newEmail);
+		setSubmitted(false);
+        setIsValid(validateEmail(newEmail));
+	};
+
+	
+	const handlePassword = (e) => {
+		setPassword(e.target.value);
+		setSubmitted(false);
+	};
+
+	
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (name === '' || email === '' || password === '' || phoneNumber==='') {
+			setError(true);
+		
+		}
+         else if (isValid) {
+            setSubmitted(true);
+			setError(false);
+            
+           
+          } else {
+           
+			setError(false);
+            alert("Enter a valid email");
+          }
+	};
+    
+   
+
+	
+	const successMessage = () => {
+		return (
+			<div
+				className="success"
+				
+                style={{
+					display: submitted ? '' : 'none',
+                    
+				}}>
+                <h1> Your are Registered successfully</h1>
+                
+				
+			</div>
+		);
+	};
+
+	
+	const errorMessage = () => {
+		return (
+			<div
+				className="error my-3"
+				style={{
+					display: error ? '' : 'none',
+				}}>
+				<h1>Please enter all the fields</h1>
+			</div>
+		);
+	};
+
+    
+    
+
+
+	return (
+		<div className="form">
+			
+
+			<div className="messages">
+				{errorMessage()}
+
+				{successMessage()}
+			</div>
+
+			<form>
+				
+				<label className="form-label">Name:  </label>
+				<input onChange={handleName} className="input"
+					value={name} type="text" />
+                     <div className="col-md-6"></div>
+
+
+				<label className="form-label">Email:   </label>
+				<input onChange={handleEmail} className="input"
+					value={email} type="email" />
+                    
+                     <div className="col-md-6"></div>
+
+				<label className="form-label">Pasword:  </label>
+				<input onChange={handlePassword} className="input"
+					value={password} type="password" />
+                     <div className="col-md-6"></div>
+                     
+				<label className="form-label"> P.NUMBER:</label>
+				<input onChange={handlePhoneNumber} className="input"
+					value={phoneNumber} type="phonenumber" />
+                     <div className="col-md-6"></div>
+
+
+				<button onClick={handleSubmit} className="btn"
+						type="submit">
+					Submit
+				</button>
+			</form>
+            
+		</div>
+	);
+}
+
+
+
+
+
+
+
+
+
+import React, { useState } from 'react';
+
+function RegistrationForm() {
+  const initialFormData = {
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  };
+
+  const [formData, setFormData] = useState(initialFormData);
+ ;
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // You can perform additional validation or submit data to a server here
+    // For demonstration purposes, we'll simply display the submitted data
+
+    
+
+    // Reset the form after submission
+    setFormData(initialFormData);
+  };
+
+  return (
+    <div>
+      <h2>Registration Form</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+
+      
+    </div>
+  );
+}
+
+export default RegistrationForm;
+
+
+
+
+// final registeration
+import { useState } from 'react';
+
+export default function RegistrationForm() {
+
+    const initial = {
+        name: '',
+         email: '',
+        password: '',
+        phoneNumber:'',
+      };
+    
+
+	
+	const [name, setName] = useState();
+	const [email, setEmail] = useState('');
+    const [isValid, setIsValid] = useState(true);
+	const [password, setPassword] = useState('');
+    
+    const[phoneNumber,setPhoneNumber]=useState('');
+    
+
+	const [submitted, setSubmitted] = useState(false);
+	const [error, setError] = useState(false);
+
+	
+	const handleName = (e) => {
+		setName(e.target.value);
+		setSubmitted(false);
+	};
+const handlePhoneNumber =(e)=>{
+    setPhoneNumber(e.target.value);
+    setSubmitted(false);
+    
+}
+const validateEmail = (email) => {
+    const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return pattern.test(email);
+};
+	
+	const handleEmail = (e) => {
+		const newEmail=e.target.value;
+       
+        setEmail(newEmail);
+		setSubmitted(false);
+        setIsValid(validateEmail(newEmail));
+	};
+
+	
+	const handlePassword = (e) => {
+		setPassword(e.target.value);
+		setSubmitted(false);
+	};
+
+	
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (name === '' || email === '' || password === '' || phoneNumber==='') {
+			setError(true);
+		
+		}
+         else if (isValid) {
+            setSubmitted(true);
+			setError(false);
+            setName(initial.name);
+            setEmail(initial.email);
+            setPassword(initial.password);
+            setPhoneNumber(initial.email);
+           
+          } else {
+           
+		
+            alert("Enter a valid email");
+          }
+	};
+    
+   
+
+	
+	const successMessage = () => {
+		return (
+			<div
+				className="success"
+				
+                style={{
+					display: submitted ? '' : 'none',
+                    
+				}}>
+                <h1> Your are Registered successfully</h1>
+                
+				
+			</div>
+		);
+	};
+
+	
+	const errorMessage = () => {
+		return (
+			<div
+				className="error my-3"
+				style={{
+					display: error ? '' : 'none',
+				}}>
+				<h1>Please enter all the fields</h1>
+			</div>
+		);
+	};
+
+    
+    
+
+
+	return (
+		<div className="form">
+			
+
+			<div className="messages">
+				{errorMessage()}
+
+				{successMessage()}
+			</div>
+
+			<form>
+				
+				<label className="form-label">Name:  </label>
+				<input onChange={handleName} className="input"
+					value={name} type="text" />
+                     <div className="col-md-6"></div>
+
+
+				<label className="form-label">Email:   </label>
+				<input onChange={handleEmail} className="input"
+					value={email} type="email" />
+                    
+                     <div className="col-md-6"></div>
+
+				<label className="form-label">Pasword:  </label>
+				<input onChange={handlePassword} className="input"
+					value={password} type="password" />
+                     <div className="col-md-6"></div>
+                     
+				<label className="form-label"> P.NUMBER:</label>
+				<input onChange={handlePhoneNumber} className="input"
+					value={phoneNumber} type="phonenumber" />
+                     <div className="col-md-6"></div>
+
+
+				<button onClick={handleSubmit} className="btn"
+						type="submit">
+					Submit
+				</button>
+			</form>
+            
+		</div>
+	);
+}
+
+
+
+
+
+//App.csspp
+
+.App {
+  justify-content: center; 
+  text-align: center;
+  background-color: rgb(4, 32, 36);
+  padding: 250px ;
+  margin: auto;
+  max-width: 5100px;
+  align-items: center; 
+  
+  
+}
+
+.label {
+  display: block;
+  text-align: center;
+  font-size: larger;
+  color: rgb(227, 219, 219);
+  padding: 20px;
+  margin: 20px;
+}
+
+.input {
+  font-size: large;
+  
+  padding: 2px;
+  margin: 2px;
+
+}
+
+.btn {
+  color: rgb(254, 251, 251);
+  background-color: rgb(26, 44, 108);
+  border-radius: 5px;
+  font-size: larger;
+  display: block;
+  padding: 5px;
+  margin: 10px auto;
+}
+
+.messages {
+  display: flex;
+  justify-content: center;
+}
+.border-success {
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
+}
+
+.error {
+  display: block;
+  /*background-color: red;*/
+  color: rgb(30, 7, 7);
+  width: fit-content;
+ /* height: 50px;*/
+  padding: 5px;
+}
+
+.success {
+  display: block;
+  /*background-color: lightblue;*/
+  color: black;
+  width: fit-content;
+  /*height: 50px;*/
+  padding: 5px;
+}
+
+.background-image{
+  background-image: url('C:\Users\HP\OneDrive\Desktop\react form\myregisterationform\src\office-supplies_23-2148103974.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  
+}
+
+
+
+import './App.css';
+//import './style.css';
+{/*
+import RegistrationForm from './component/registrationForm';
+//import Reset from './component/reset';
+
+
+function App() {
+  return (
+    <div className="App background-image">
+    <center>
+    <h1 >REGISTERATION FORM </h1>
+    
+    </center>
+   
+   <RegistrationForm/>
+   
+
+
+   
+    </div>
+   
+  );
+}
+
+export default App;
+*/}
+
+
+
+
+
+
+import { useState } from 'react';
+
+export default function RegistrationForm() {
+
+    const initial = {
+        name: '',
+         email: '',
+        password: '',
+        phoneNumber:'',
+      };
+	const [name, setName] = useState();
+	const [email, setEmail] = useState('');
+    const [isValid, setIsValid] = useState(true);
+	const [password, setPassword] = useState('');
+    const[phoneNumber,setPhoneNumber]=useState('');
+	const [submitted, setSubmitted] = useState(false);
+	const [error, setError] = useState(false);
+
+	
+	const handleName = (e) => {
+		setName(e.target.value);
+		setSubmitted(false);
+	};
+
+
+     const handlePhoneNumber =(e)=>{
+    setPhoneNumber(e.target.value);
+    setSubmitted(false);
+    
+}
+const validateEmail = (email) => {
+    const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return pattern.test(email);
+};
+	
+	const handleEmail = (e) => {
+		const newEmail=e.target.value;
+       
+        setEmail(newEmail);
+		setSubmitted(false);
+        setIsValid(validateEmail(newEmail));
+	};
+
+	
+	const handlePassword = (e) => {
+		setPassword(e.target.value);
+		setSubmitted(false);
+	};
+
+	
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (name === '' || email === '' || password === '' || phoneNumber==='') {
+			setError(true);
+		
+		}
+         else if (isValid) {
+            setSubmitted(true);
+			setError(false);
+            setName(initial.name);
+            setEmail(initial.email);
+            setPassword(initial.password);
+            setPhoneNumber(initial.email);
+           
+          } 
+	};
+    
+   
+
+	
+	const successMessage = () => {
+		return (
+			<div
+				className="success"
+				
+                style={{
+					display: submitted ? '' : 'none',
+                    
+				}}>
+                <h1> Your are Registered successfully</h1>
+                
+				
+			</div>
+		);
+	};
+
+	
+	const errorMessage = () => {
+		return (
+			<>
+			<div
+				className="error my-3"
+				style={{
+					display: error ? '' : 'none',
+				}}>
+				<h1>Please enter all the fields</h1>
+			</div>
+			
+			</>
+		);
+	};
+
+    
+    
+
+
+	return (
+		<div className="form">
+			
+
+			<div className="messages">
+				{errorMessage()}
+
+				{successMessage()}
+			</div>
+
+			<form>
+			
+			<br/>
+				<h1>REGISTERATION Form</h1>
+				<label className="form-label">Name:  </label>
+				<input onChange={handleName} className="input"
+					value={name} type="text" />
+                     <div className="col-md-3 mb-3"></div>
+
+
+				<label className="form-label">Email:   </label>
+				<input onChange={handleEmail} className="input"
+					value={email} type="email" />
+					<div className='error '>
+					{!isValid && (
+        <p className="error-message">Please enter a valid email address*.</p>
+      )}
+					
+					</div>
+                    
+                     <div className="col-md-6"></div>
+
+				<label className="form-label">Pasword:  </label>
+				<input onChange={handlePassword} className="input"
+					value={password} type="password" />
+                     <div className="col-md-6"></div>
+                     
+				<label className="form-label"> M.NUMBER:</label>
+				<input onChange={handlePhoneNumber} className="input"
+					value={phoneNumber} type="phonenumber" />
+                     <div className="col-md-6"></div>
+
+
+				<button onClick={handleSubmit} className="btn"
+						type="submit">
+					Submit
+				</button>
+			</form>
+            
+		</div>
+	);
+}
+
+
+
+
+
+
+
+
+
+
+
+function store() {
+  var name = document.getElementById("name");
+  var pw = document.getElementById("pw");
+  var lowerCaseLetters = /[a-z]/g;
+  var upperCaseLetters = /[A-Z]/g;
+  var numbers = /[0-9]/g;
+
+  if (name.value.length == 0) {
+    alert("Please fill in email");
+  } else if (pw.value.length == 0) {
+    alert("Please fill in password");
+  } else if (name.value.length == 0 && pw.value.length == 0) {
+    alert("Please fill in email and password");
+  } else if (pw.value.length > 8) {
+    alert("Max of 8");
+  } else if (!pw.value.match(numbers)) {
+    alert("please add 1 number");
+  } else if (!pw.value.match(upperCaseLetters)) {
+    alert("please add 1 uppercase letter");
+  } else if (!pw.value.match(lowerCaseLetters)) {
+    alert("please add 1 lovercase letter");
+  } else {
+    localStorage.setItem("name", name.value);
+    localStorage.setItem("pw", pw.value);
+    alert("Your account has been created");
+  }
+}
+
+//checking
+function check() {
+  var storedName = localStorage.getItem("name");
+  var storedPw = localStorage.getItem("pw");
+
+  var userName = document.getElementById("userName");
+  var userPw = document.getElementById("userPw");
+  var userRemember = document.getElementById("rememberMe");
+
+  if (userName.value == storedName && userPw.value == storedPw) {
+    alert("You are logged in.");
+  } else {
+    alert("Error on login");
+  }
+}
+
+
+
+
+
+
+import { useState } from 'react';
+
+export default function RegistrationForm() {
+
+    const initial = {
+        name: '',
+         email: '',
+        password: '',
+        phoneNumber:'',
+      };
+	const [name, setName] = useState();
+	const [email, setEmail] = useState('');
+    const [isValid, setIsValid] = useState(true);
+	const [password, setPassword] = useState('');
+    const[phoneNumber,setPhoneNumber]=useState('');
+	const [submitted, setSubmitted] = useState(false);
+	const [error, setError] = useState(false);
+
+	
+	const handleName = (e) => {
+		setName(e.target.value);
+		setSubmitted(false);
+	};
+
+
+     const handlePhoneNumber =(e)=>{
+    setPhoneNumber(e.target.value);
+    setSubmitted(false);
+    
+}
+const validateEmail = (email) => {
+    const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return pattern.test(email);
+};
+	
+	const handleEmail = (e) => {
+		const newEmail=e.target.value;
+       
+        setEmail(newEmail);
+		setSubmitted(false);
+        setIsValid(validateEmail(newEmail));
+	};
+
+	
+	const handlePassword = (e) => {
+		setPassword(e.target.value);
+		setSubmitted(false);
+	};
+
+	
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (name === '' || email === '' || password === '' || phoneNumber==='') {
+			setError(true);
+		
+		}
+         else if (isValid) {
+            setSubmitted(true);
+			setError(false);
+
+			localStorage.setItem('registrationData', JSON.stringify());
+            setName(initial.name);
+            setEmail(initial.email);
+            setPassword(initial.password);
+            setPhoneNumber(initial.email);
+           
+          } 
+	};
+    
+   
+
+	
+	const successMessage = () => {
+		return (
+			<div
+				className="success"
+				
+                style={{
+					display: submitted ? '' : 'none',
+                    
+				}}>
+                <h1> Your are Registered successfully</h1>
+                
+				
+			</div>
+		);
+	};
+
+	
+	const errorMessage = () => {
+		return (
+			<>
+			<div
+				className="error my-3"
+				style={{
+					display: error ? '' : 'none',
+				}}>
+				<h1>Please enter all the fields</h1>
+			</div>
+			
+			</>
+		);
+	};
+
+    
+    
+
+
+	return (
+		<div className="form">
+			
+
+			<div className="messages">
+				{errorMessage()}
+
+				{successMessage()}
+			</div>
+
+			<form>
+			
+			<br/>
+				<h1>REGISTERATION Form</h1>
+				<label className="form-label">Name:  </label>
+				<input onChange={handleName} className="input"
+					value={name} type="text" />
+                     <div className="col-md-3 mb-3"></div>
+
+
+				<label className="form-label">Email:   </label>
+				<input onChange={handleEmail} className="input"
+					value={email} type="email" />
+					<div className='error '>
+					{!isValid && (
+        <p className="error-message">Please enter a valid email address*.</p>
+      )}
+					
+					</div>
+                    
+                     <div className="col-md-6"></div>
+
+				<label className="form-label">Pasword:  </label>
+				<input onChange={handlePassword} className="input"
+					value={password} type="password" />
+                     <div className="col-md-6"></div>
+                     
+				<label className="form-label"> M.NUMBER:</label>
+				<input onChange={handlePhoneNumber} className="input"
+					value={phoneNumber} type="phonenumber" />
+                     <div className="col-md-6"></div>
+
+
+				<button onClick={handleSubmit} className="btn"
+						type="submit">
+					Submit
+				</button>
+			</form>
+            
+		</div>
+	);
+}
+
+
+
+
+
+
+
+
+import React, { useState } from 'react';
+
+function RegistrationForm() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+  
+  const initial = {
+	firstName: '',
+	 email: '',
+	password: '',
+	lastName:'',
+  };
+
+  const [formErrors, setFormErrors] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    // Validate the input as it changes
+    validateInput(name, value);
+  };
+
+  const validateInput = (name, value) => {
+    // Basic validation checks (you can add more complex validation logic)
+    let errorMessage = '';
+
+    if (name === 'firstName' || name === 'lastName') {
+      if (!value) {
+        errorMessage = 'This field is required*.';
+      }
+    } else if (name === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!value.match(emailRegex)) {
+        errorMessage = 'Please enter a valid email address*.';
+      }
+    } else if (name === 'password') {
+      if (value.length < 6) {
+        errorMessage = 'Password must be at least 6 characters long*.';
+      }
+    }
+
+    setFormErrors({
+      ...formErrors,
+      [name]: errorMessage,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // Check if there are any validation errors
+    if (Object.values(formErrors).every((error) => !error)) {
+     
+     console.log('Form submitted');
+	 setFormData(initial);
+	
+	 
+    } else {
+      console.log('Form contains validation errors. Please correct them.');
+    }
+
+  };
+
+  return (
+    <div>
+      <h1>Registration Form</h1>
+      <form onSubmit={handleSubmit}>
+        <div>
+		<label className="form-label"> FirstName  </label>
+	
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
+          />
+          <p className="error-message">{formErrors.firstName}</p>
+        </div>
+        <div>
+		<label className="form-label">Last Name  </label>	
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
+            onChange={handleChange}
+          />
+          <p className="error-message">{formErrors.lastName}</p>
+        </div>
+        <div>
+		<label className="form-label">Email add.  </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+          <p className="error-message">{formErrors.email}</p>
+        </div>
+        <div>
+		<label className="form-label">Password  </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+          />
+          <p className="error-message">{formErrors.password}</p>
+        </div>
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  );
+}
+
+export default RegistrationForm;
+
+
+
+
+
+
+import React, { useEffect, useState } from 'react';
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [storedUserData, setStoredUserData] = useState(null);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('registrationData');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setStoredUserData(parsedData);
+    }
+  }, []);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    // Check if the entered email and password match the stored user data
+    if (storedUserData && email === storedUserData.email && password === storedUserData.password) {
+      alert('Login successful');
+    } else {
+      alert('Invalid email or password');
+    }
+  };
+
+  return (
+    <div>
+      <h1>Login Page</h1>
+      <div className="dropdown-menu">
+        <form onSubmit={handleLogin} className="px-4 py-3">
+          <div className="form-group">
+            <label htmlFor="exampleDropdownFormEmail1">Email address</label>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              value={email}
+              className="form-control"
+              id="exampleDropdownFormEmail1"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="exampleDropdownFormPassword1">Password</label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              value={password}
+              className="form-control"
+              id="exampleDropdownFormPassword1"
+            />
+          </div>
+          <div className="form-check">
+            <input type="checkbox" className="form-check-input" id="dropdownCheck" />
+            <label className="form-check-label" htmlFor="dropdownCheck">
+              Remember me
+            </label>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Sign in
+          </button>
+        </form>
+        <div className="dropdown-divider"></div>
+        <a className="dropdown-item" href="/">
+          New around here? Sign up
+        </a>
+        <br />
+        <a className="dropdown-item" href="/">
+          Forgot password?</a>
+            </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
+import { useState } from 'react';
+
+export default function RegistrationForm() {
+
+   
+	const [name, setName] = useState();
+	const [email, setEmail] = useState('');
+    const [isValid, setIsValid] = useState(true);
+	const [password, setPassword] = useState('');
+    const[phoneNumber,setPhoneNumber]=useState('');
+	const [submitted, setSubmitted] = useState(false);
+	const [error, setError] = useState(false);
+
+	
+
+	 // to store the form data
+	 const formData = {
+		name,
+		email,
+		password,
+		phoneNumber,
+	  };
+
+	  
+
+  
+	  //  data in local storage
+	  useEffect(() => {
+	  localStorage.setItem('registrationData', JSON.stringify(formData));
+	}, [items]);
+
+
+	const handleName = (e) => {
+		setName(e.target.value);
+		setSubmitted(false);
+	};
+
+
+     const handlePhoneNumber =(e)=>{
+    setPhoneNumber(e.target.value);
+    setSubmitted(false);
+    
+}
+const validateEmail = (email) => {
+    const pattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+    return pattern.test(email);
+};
+	
+	const handleEmail = (e) => {
+		const newEmail=e.target.value;
+       
+        setEmail(newEmail);
+		setSubmitted(false);
+        setIsValid(validateEmail(newEmail));
+	};
+
+	
+	const handlePassword = (e) => {
+		setPassword(e.target.value);
+		setSubmitted(false);
+	};
+
+	
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		if (name === '' || email === '' || password === '' || phoneNumber === '') {
+		  setError(true);
+		} else if (isValid) {
+		  setSubmitted(true);
+		  setError(false);
+	  
+		 
+	  
+		  // reset the form
+		  setName('');
+		  setEmail('');
+		  setPassword('');
+		  setPhoneNumber('');
+		}
+	  };
+	  
+   
+	
+	const successMessage = () => {
+		return (
+			<div
+				className="success"
+				
+                style={{
+					display: submitted ? '' : 'none',
+                    
+				}}>
+                <h1> Your are Registered successfully</h1>
+                
+				
+			</div>
+		);
+	};
+
+	
+	const errorMessage = () => {
+		return (
+			<>
+			<div
+				className="error my-3"
+				style={{
+					display: error ? '' : 'none',
+				}}>
+				<h1>Please enter all the fields</h1>
+			</div>
+			
+			</>
+		);
+	};
+
+    
+    
+
+
+	return (
+		<div className="form">
+			
+
+			<div className="messages">
+				{errorMessage()}
+
+				{successMessage()}
+			</div>
+
+			<form>
+			
+			<br/>
+				<h1>REGISTERATION Form</h1>
+				<label className="form-label">Name:  </label>
+				<input onChange={handleName} className="input"
+					value={name} type="text" />
+                     <div className="col-md-3 mb-3"></div>
+
+
+				<label className="form-label">Email:   </label>
+				<input onChange={handleEmail} className="input"
+					value={email} type="email" />
+					<div className='error '>
+					{!isValid && (
+        <p className="error-message">Please enter a valid email address*.</p>
+      )}
+					
+					</div>
+                    
+                     <div className="col-md-6"></div>
+
+				<label className="form-label">Pasword:  </label>
+				<input onChange={handlePassword} className="input"
+					value={password} type="password" />
+                     <div className="col-md-6"></div>
+                     
+				<label className="form-label"> M.NUMBER:</label>
+				<input onChange={handlePhoneNumber} className="input"
+					value={phoneNumber} type="phonenumber" />
+                     <div className="col-md-6"></div>
+
+
+				<button onClick={handleSubmit} className="btn"
+						type="submit">
+					Submit
+				</button>
+			</form>
+            
+		</div>
+	);
+}
+
